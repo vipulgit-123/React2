@@ -1,0 +1,58 @@
+{
+  "status": "ok",
+  "totalResults": 3,
+  "articles": [
+    {
+      "source": {
+        "id": "espn-cric-info",
+        "name": "ESPN Cric Info"
+      },
+      "author": null,
+      "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+      "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+      "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+      "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+      "publishedAt": "2020-04-27T11:41:47Z",
+      "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+    },
+    {
+      "source": {
+        "id": "espn-cric-info",
+        "name": "ESPN Cric Info"
+      },
+      "author": null,
+      "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+      "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+      "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+      "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+      "publishedAt": "2020-03-30T15:26:05Z",
+      "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+    },
+    {
+      "source": {
+        "id": "techradar",
+        "name": "TechRadar"
+      },
+      "author": "Rowan Davies",
+      "title": "Sony is channeling Tubi with its new Live TV on PS5 free streaming platform — here are the 100 live channels and on-demand movies you can stream now",
+      "description": "Live TV on PS5 is Sony's new free streaming service, and it packs over 100 live channels across movies, shows, sports, and more.",
+      "url": "https://www.techradar.com/streaming/sony-is-channeling-tubi-with-its-new-live-tv-on-ps5-free-streaming-platform-here-are-the-100-live-channels-and-on-demand-movies-you-can-stream-now",
+      "urlToImage": "https://cdn.mos.cms.futurecdn.net/Ljj8u4gYxtGptXyP8yzp76-1920-80.jpg",
+      "publishedAt": "2026-09-01T11:51:36Z",
+      "content": "<ul><li>Sony is launching a new free ad-supported service on PS5 consoles </li><li>Its 100 live channels cover a wide range of titles across film, TV, news, sports, and more </li><li>Live TV on PS5 i… [+3856 chars]"
+    },
+    {
+      "source": {
+        "id": "talksport",
+        "name": "TalkSport"
+      },
+      "author": "Josh Fordham",
+      "title": "Manchester United release statement after journalists 'banned' from press conference",
+      "description": "Manchester United explained why four journalists were banned from an Erik ten Hag press conference on Tuesday.Sky Sports chief reporter Kaveh Solhekho",
+      "url": "https://talksport.com/football/1666142/man-utd-journalists-banned-press-conference-erik-ten-hag/",
+      "urlToImage": "https://talksport.com/wp-content/uploads/sites/5/2023/10/228f511f-c84a-48e8-b067-5c7277d90984.jpg?strip=all&quality=100&w=1920&h=1080&crop=1",
+      "publishedAt": "2023-12-05T12:12:06Z",
+      "content": "Manchester United explained why four journalists were banned from an Erik ten Hag press conference on Tuesday.\r\nSky Sports chief reporter Kaveh Solhekhol, the Manchester Evening News' Samuel Luckhurs… [+2999 chars]"
+    }
+      ]
+}
