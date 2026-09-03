@@ -1,23 +1,20 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
-import Spinner from "./Spinner"; 
-import PropTypes from 'prop-types'
-
+import Spinner from "./Spinner";
+import PropTypes from "prop-types";
 
 export default class News extends Component {
+  static defaultProps = {
+    country: "us",
+    pageSize: 10,
+    category: "general",
+  };
 
-    static defaultProps = {
-        country: 'us',
-        pageSize: 10,
-        category: 'general',
-    }
-
-    static propTypes = {
-        country: PropTypes.string,
-        pageSize: PropTypes.number,
-        category: PropTypes.string,
-    }
-
+  static propTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string,
+  };
 
   constructor() {
     super();
@@ -41,11 +38,10 @@ export default class News extends Component {
     console.log(parsedData);
 
     if (!data.ok || data.status === "error") {
-    console.log("API Error:", parsedData.message);
-    this.setState({ loading: false });
-    return;
-}
-
+      console.log("API Error:", parsedData.message);
+      this.setState({ loading: false });
+      return;
+    }
 
     this.setState({
       articles: parsedData.articles || [],
@@ -105,12 +101,15 @@ export default class News extends Component {
           <span className="headline-label">
             <h2>Breaking News</h2>
           </span>
-             <div className="headline-wrapper">
-              <span className="headline-text">
-                <h3 className="text-center"> Latest News : Stay updated with Today's Top headlines </h3>
-          </span>
-             </div>
-            </div>
+          <div className="headline-wrapper">
+            <span className="headline-text">
+              <h3 className="text-center">
+                {" "}
+                Latest News : Stay updated with Today's Top headlines{" "}
+              </h3>
+            </span>
+          </div>
+        </div>
         {this.state.loading && <Spinner />}
         <div className="row">
           {!this.state.loading &&
