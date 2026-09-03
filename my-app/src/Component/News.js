@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
 
 export default class News extends Component {
 
@@ -18,13 +19,15 @@ export default class News extends Component {
     async componentDidMount() {
         console.log("cdm")
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ff0eb82f79a94cd7bbd165f7ec2d761a&page=${this.state.page}&pageSize=${this.state.pageSize}`
+        this.setState({loading: true} )
         let data = await fetch(url)
         let parshedData = await data.json()
         console.log(parshedData)
         this.setState(
             {
                 articles: parshedData.articles || [],
-                totalResults:parshedData.totalResults
+                totalResults:parshedData.totalResults,
+                loading:false
             })
     }
 
@@ -36,7 +39,8 @@ export default class News extends Component {
         }else {
             let url =
              `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ff0eb82f79a94cd7bbd165f7ec2d761a&page=${nextPage}&pageSize=${this.state.pageSize}`;
-        let data = await fetch(url)
+              this.setState({loading: true});
+            let data = await fetch(url)
         let parshedData = await data.json()
         console.log(parshedData)
 
@@ -44,7 +48,8 @@ export default class News extends Component {
             {
                  page:  nextPage,
                 articles: parshedData.articles || [],
-                totalResults: parshedData.totalResults
+                totalResults: parshedData.totalResults,
+                loading: false
             }
         )
         }
@@ -58,7 +63,8 @@ export default class News extends Component {
 }else{
            let url =
              `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ff0eb82f79a94cd7bbd165f7ec2d761a&page=${prevPage}&pageSize=${this.state.pageSize}`;
-        let data = await fetch(url)
+            this.setState({loading: true});
+           let data = await fetch(url)
         let parshedData = await data.json()
         console.log(parshedData)
        console.log("Articles received:", parshedData.articles?.length ||0 );
@@ -67,7 +73,8 @@ export default class News extends Component {
         this.setState(
             {
                 page: prevPage,
-               articles: parshedData.articles || []
+               articles: parshedData.articles || [],
+                loading:false
             }
         )
         }
@@ -78,8 +85,9 @@ export default class News extends Component {
     return (
       <div className="container my-3">
           <h2>Today Top Headlines</h2>
+          {this.state.loading && <Spinner/>}
           <div className="row">
-               {this.state.articles.map((element)=>{
+               {!this.state.loading && this.state.articles.map((element)=>{
                    return <div className="col-md-3 my-2" key={element.url}>
               <NewsItem title={(element.title || "").split(" ").slice(0, 5).join(" ")}
                         description={element.description? element.description.split(" ").slice(0, 15).join(" "):element.title}
