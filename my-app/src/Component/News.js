@@ -96,7 +96,7 @@ export default class News extends Component {
   render() {
     console.log("render");
     return (
-      <div className="container my-3">
+      <div className="container my-3 mt-3 mb-3">
         <div className="headline-bar">
           <span className="headline-label">
             <h2>Breaking News</h2>
@@ -128,6 +128,9 @@ export default class News extends Component {
                     }
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
+                    author={element.author}
+                    date={element.publishedAt}
+                    source={element.source.name}
                   />
                 </div>
               );

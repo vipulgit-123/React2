@@ -97,7 +97,6 @@
   }
 }
 
-
 .news-logo {
   font-size: 50px;
   font-weight: 800;
@@ -126,4 +125,10 @@
 .news-logo:hover .logo-monkey {
   color: #dc3545;
   text-shadow: 0 0 12px rgba(220, 53, 69, 0.5);
+}
+
+.news-image {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
 }
