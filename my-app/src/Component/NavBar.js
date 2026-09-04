@@ -33,7 +33,7 @@ export default class NavBar extends Component {
               <ul className="navbar-nav ms-auto gap-lg-2">
                 <li className="nav-item">
                   <Link
-                    className="nav-link active fw-semibold px-3"
+                    className="nav-link fw-bold px-3"
                     aria-current="page"
                     to="/home"
                   >
@@ -41,45 +41,45 @@ export default class NavBar extends Component {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link fw-semibold px-3" to="/business">
+                  <Link className="nav-link fw-bold px-3" to="/business">
                     Business
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link fw-semibold px-3"
+                    className="nav-link fw-bold px-3"
                     to="/entertainment"
                   >
                     Entertainment
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link fw-semibold px-3" to="/general">
+                  <Link className="nav-link fw-bold px-3" to="/general">
                     General
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link fw-semibold px-3" to="/health">
+                  <Link className="nav-link fw-bold px-3" to="/health">
                     Health
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link fw-semibold px-3" to="/science">
+                  <Link className="nav-link fw-bold px-3" to="/science">
                     Science
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link fw-semibold px-3" to="/sports">
+                  <Link className="nav-link fw-bold px-3" to="/sports">
                     Sports
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link fw-semibold px-3" to="/technology">
+                  <Link className="nav-link fw-bold px-3" to="/technology">
                     Technology
                   </Link>
                 </li>
                 {/*<li className="nav-item">*/}
-                {/*    <Link className="nav-link fw-semibold px-3" to="/about">About</Link >*/}
+                {/*    <Link className="nav-link fw-bold px-3" to="/about">About</Link >*/}
                 {/*</li>*/}
               </ul>
             </div>
