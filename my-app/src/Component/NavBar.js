@@ -15,7 +15,6 @@ export default class NavBar extends Component {
                 <span className="logo-monkey">Monkey</span>
               </h2>
             </Link>
-
               <button className="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
@@ -26,6 +25,7 @@ export default class NavBar extends Component {
 
               <span className="navbar-toggler-icon"></span>
             </button>
+
 
             <div
               className="collapse navbar-collapse"

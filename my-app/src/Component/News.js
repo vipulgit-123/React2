@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default class News extends Component {
   static defaultProps = {
@@ -16,6 +17,10 @@ export default class News extends Component {
     category: PropTypes.string,
   };
 
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   constructor(props) {
     super(props);
     console.log("Hello i am a constructor from NewsComponent");
@@ -26,6 +31,7 @@ export default class News extends Component {
       pageSize: props.pageSize,
       totalResults: 0,
     };
+    document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
   }
 
   async updateNews(){
@@ -44,36 +50,56 @@ export default class News extends Component {
 
   async componentDidMount() {
     console.log("cdm");
-  await this.updateNews();
+    await this.updateNews();
   }
 
-  handleNext = async () => {
-    console.log("Next");
-    let nextPage = this.state.page + 1;
-    this.setState({
-      page: nextPage
-    },
-        () => {
-    this.updateNews();
-  }
-  )
+  // handleNext = async () => {
+  //   console.log("Next");
+  //   let nextPage = this.state.page + 1;
+  //   this.setState(
+  //     {
+  //       page: nextPage,
+  //     },
+  //     () => {
+  //       this.updateNews();
+  //     },
+  //   );
+  // };
 
-  };
+  // handlePrev = async () => {
+  //   console.log("Previous");
+  //   let prevPage = this.state.page - 1;
+  //   if (prevPage < 1) {
+  //     return;
+  //   }
+  //   this.setState(
+  //     {
+  //       page: prevPage,
+  //     },
+  //     () => {
+  //       this.updateNews();
+  //     },
+  //   );
+  // };
 
-  handlePrev = async () => {
-    console.log("Previous");
-   let prevPage = this.state.page - 1;
-    if (prevPage < 1) {
-    return;
-  }
-    this.setState({
-      page: prevPage
-    },
-         () => {
-    this.updateNews();
-  }
-  )
+  fetchMoreData = async () => {
 
+    this.setState({ page: this.state.page + 1 });
+
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=ff0eb82f79a94cd7bbd165f7ec2d761a&page=${this.state.page}&pageSize=${this.state.pageSize}`;
+    this.setState({ loading: true });
+
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(data);
+    console.log(parsedData);
+
+      this.setState({
+      articles: this.state.articles.concat(parsedData.articles),
+      // articles: parsedData.articles || [],
+      totalResults: parsedData.totalResults,
+      loading: false,
+    });
   };
 
   render() {
@@ -88,15 +114,23 @@ export default class News extends Component {
             <span className="headline-text">
               <h3 className="text-center">
                 {" "}
-                Latest News : Stay updated with Today's Top headlines{" "}
+                Latest News : Stay updated with Today's Top{" "}
+                {this.capitalizeFirstLetter(this.props.category)} Headlines{" "}
               </h3>
             </span>
           </div>
         </div>
-        {this.state.loading && <Spinner />}
-        <div className="row">
-          {!this.state.loading &&
-            this.state.articles.map((element) => {
+        {/*{this.state.loading && <Spinner />}*/}
+        <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.articles.length < this.state.totalResults}
+          // loader={<h4>Loading...</h4>}
+          loader={<Spinner />}
+        >
+          <div className="container">
+              <div className="row">
+            {this.state.articles.map((element) => {
               return (
                 <div className="col-md-3 my-2" key={element.url}>
                   <NewsItem
@@ -118,28 +152,55 @@ export default class News extends Component {
                 </div>
               );
             })}
-        </div>
-        <div className="container d-flex justify-content-between">
-          <button
-            disabled={this.state.page <= 1}
-            type="button"
-            className="btn btn-light"
-            onClick={this.handlePrev}
-          >
-            <strong>&larr; Previous</strong>
-          </button>
-          <button
-            disabled={
-              this.state.page >=
-              Math.ceil(this.state.totalResults / this.state.pageSize)
-            }
-            type="button"
-            className="btn btn-light"
-            onClick={this.handleNext}
-          >
-            <strong>Next &rarr;</strong>
-          </button>
-        </div>
+          </div>
+          </div>
+        </InfiniteScroll>
+        {/*<div className="row">*/}
+        {/*  {!this.state.loading &&*/}
+        {/*    this.state.articles.map((element) => {*/}
+        {/*      return (*/}
+        {/*        <div className="col-md-3 my-2" key={element.url}>*/}
+        {/*          <NewsItem*/}
+        {/*            title={(element.title || "")*/}
+        {/*              .split(" ")*/}
+        {/*              .slice(0, 5)*/}
+        {/*              .join(" ")}*/}
+        {/*            description={*/}
+        {/*              element.description*/}
+        {/*                ? element.description.split(" ").slice(0, 15).join(" ")*/}
+        {/*                : element.title*/}
+        {/*            }*/}
+        {/*            imageUrl={element.urlToImage}*/}
+        {/*            newsUrl={element.url}*/}
+        {/*            author={element.author}*/}
+        {/*            date={element.publishedAt}*/}
+        {/*            source={element.source.name}*/}
+        {/*          />*/}
+        {/*        </div>*/}
+        {/*      );*/}
+        {/*    })}*/}
+        {/*</div>*/}
+        {/*<div className="container d-flex justify-content-between">*/}
+        {/*  <button*/}
+        {/*    disabled={this.state.page <= 1}*/}
+        {/*    type="button"*/}
+        {/*    className="btn btn-light"*/}
+        {/*    onClick={this.handlePrev}*/}
+        {/*  >*/}
+        {/*    <strong>&larr; Previous</strong>*/}
+        {/*  </button>*/}
+        {/*  <button*/}
+        {/*    disabled={*/}
+        {/*      this.state.page >=*/}
+        {/*      Math.ceil(this.state.totalResults / this.state.pageSize)*/}
+        {/*    }*/}
+        {/*    type="button"*/}
+        {/*    className="btn btn-light"*/}
+        {/*    onClick={this.handleNext}*/}
+        {/*  >*/}
+        {/*    <strong>Next &rarr;</strong>*/}
+        {/*  </button>*/}
+        {/*</div>*/}
       </div>
     );
   }

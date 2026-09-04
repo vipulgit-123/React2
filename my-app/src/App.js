@@ -19,7 +19,7 @@ export default class App extends Component {
               path="/home"
               element={
                 <News
-                  key="general"
+                  key="home"
                   pageSize={this.pageSize}
                   country="us"
                   category="general"
