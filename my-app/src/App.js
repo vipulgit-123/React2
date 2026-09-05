@@ -11,22 +11,28 @@ const App = () => {
   const pageSize = 10;
   const apiKey = process.env.REACT_APP_NEWS_API;
   // apiKey = "ff0eb82f79a94cd7bbd165f7ec2d761a"
-
-  const [progress, setProgress] = useState(0);
-
   console.log("API KEY:", process.env.REACT_APP_NEWS_API);
   console.log("apiKey:", apiKey);
+
+  const [progress, setProgress] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
   return (
     <div>
       <Router>
         <LoadingBar color="#f11946" progress={progress} />
-        <NavBar />
+        <NavBar onSearch={handleSearch} />
         <Routes>
           <Route
             exact
             path="/home"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="home"
@@ -41,6 +47,7 @@ const App = () => {
             path="/business"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="business"
@@ -55,6 +62,7 @@ const App = () => {
             path="/science"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="science"
@@ -69,6 +77,7 @@ const App = () => {
             path="/general"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="general"
@@ -83,6 +92,7 @@ const App = () => {
             path="/health"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="health"
@@ -97,6 +107,7 @@ const App = () => {
             path="/sports"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="sports"
@@ -111,6 +122,7 @@ const App = () => {
             path="/technology"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="technology"
@@ -125,6 +137,7 @@ const App = () => {
             path="/entertainment"
             element={
               <News
+                searchQuery={searchQuery}
                 setProgress={setProgress}
                 apiKey={apiKey}
                 key="entertainment"
@@ -136,7 +149,6 @@ const App = () => {
           />
         </Routes>
       </Router>
-      {/*<News setProgress = {setProgress} pageSize={pageSize} country="us" category="science" />*/}
     </div>
   );
 };

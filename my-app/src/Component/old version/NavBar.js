@@ -2,21 +2,9 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import React, { useState } from "react";
+import React from "react";
 
-export default function NavBar({ onSearch }) {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    if (searchQuery.trim() === "") {
-      return;
-    }
-
-    onSearch(searchQuery);
-  };
-
+export default function NavBar() {
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg  navbar-dark bg-dark">
@@ -91,16 +79,13 @@ export default function NavBar({ onSearch }) {
               {/*</li>*/}
             </ul>
           </div>
-          <form className="d-flex px-3" role="search" onSubmit={handleSearch}>
+          <form className="d-flex px-3" role="search">
             <input
               className="form-control me-2 px-3"
               type="search"
               placeholder="Search"
               aria-label="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
             />
-
             <button className="btn btn-outline-light px-3" type="submit">
               Search
             </button>
