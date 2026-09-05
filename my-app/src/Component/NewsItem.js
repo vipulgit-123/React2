@@ -9,7 +9,7 @@ export default class NewsItem extends Component {
 
     return (
       <div>
-        <div className="card " style={{ width: "18rem" }}>
+        <div className="card position-relative" style={{ width: "18rem" }}>
 
           {/*<img src={!imageUrl?"https://npr.brightspotcdn.com/dims3/default/strip/false/crop/5196x2923+0+271/resize/1400/quality/85/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F77%2Fff%2Fbe265ef44cd6ba4ba4c48eaeafc4%2Fgettyimages-2284059159.jpg"*/}
           {/*    : imageUrl} className="card-img-top" alt="..." />*/}
@@ -21,8 +21,7 @@ export default class NewsItem extends Component {
             className="card-img-top news-image"
             alt={title || "News"}
           />
-          <div className="card position-relative">
-           <span className="position-absolute top-0 end-0 translate-middle-y badge rounded-pill bg-danger text-dark">
+           <span className="badge rounded-pill bg-danger text-dark source-badge">
               {source}
             </span>
             <h5 className="card-title">{title}
@@ -39,7 +38,6 @@ export default class NewsItem extends Component {
             >
               Read More
             </a>
-          </div>
         </div>
       </div>
     );
